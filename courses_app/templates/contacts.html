@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты</title>
+    <style type="text/css">
+        body {
+            font-family: sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .outer_header {
+            height: 768px;
+            background-position: center;
+            background: linear-gradient(0deg, #EBF3FB 8.84%, rgba(152, 195, 232, 0) 31.12%);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .inner_header {
+            margin: 0px 113px;
+            flex-grow: 1;
+            height: 100%;
+            background-image: url(img/top_back.png);
+            background-repeat: no-repeat;
+            background-position: right 88%;
+            background-size: 50%;
+        }
+
+        .main_menu {
+            padding-top: 42px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .page_title {
+            padding-top: 115px;
+        }
+
+        .top_heading {
+            width: 510px;
+            font-size: 64px;
+            color: #1F3F68;
+            font-weight: 300;
+            line-height: 74px;
+            letter-spacing: 0.04em;
+            margin-bottom: 32px;
+        }
+
+        .second_heading {
+            font-weight: 500;
+            font-size: 44px;
+            line-height: 74px;
+            letter-spacing: 0.04em;
+            text-align: center;
+            color: #FFFFFF;
+        }
+
+        .third_heading {
+            font-weight: 300;
+            font-size: 36px;
+            line-height: 46px;
+            text-align: center;
+            letter-spacing: 0.05em;
+            color: #000000;
+        }
+
+        .fourth_heading {
+            font-size: 20px;
+            line-height: 30px;
+            color: #1F3F68;
+            letter-spacing: 0.05em;
+        }
+
+        .paragraph {
+            font-size: 16px;
+            line-height: 26px;
+            color: #1F3F68;
+            letter-spacing: 0.05em;
+            opacity: 0.6;
+        }
+
+        .under_h1_text {
+            width: 425px;
+        }
+
+        .top_button {
+            font-size: 16px;
+            line-height: 26px;
+            text-align: center;
+            letter-spacing: 0.04em;
+            color: #FFFFFF;
+            background: #5A98D0;
+            box-shadow: 5px 10px 20px rgba(53, 110, 173, 0.2);
+            border-radius: 10px;
+            padding: 15px 50px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 71px;
+        }
+
+        .container {
+            margin: 0 auto;
+            max-width: 1750px;
+        }
+
+        .what_we_do {
+            margin: 0px 52px;
+            padding-top: 64px;
+        }
+
+        .doing_list {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding-top: 64px;
+            margin-bottom: 32px;
+        }
+
+        .product {
+            width: 359px;
+            padding: 44px 32px;
+            box-sizing: border-box;
+            background: #FFFFFF;
+            box-shadow: 5px 20px 50px rgba(16, 112, 177, 0.2);
+            border-radius: 10px;
+            margin-bottom: 32px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product_picture {
+            margin-bottom: 51px;
+            align-self: center;
+        }
+
+        .card_link {
+            display: inline-block;
+            margin-top: 28px;
+            font-size: 14px;
+            line-height: 30px;
+            letter-spacing: 0.05em;
+            color: #5A98D0;
+            text-decoration: none;
+        }
+
+        .finish_project {
+            margin: 22px 52px 112px;
+        }
+
+        .text_project {
+            width: 70%;
+            margin: 32px auto 64px;
+            font-size: 16px;
+            line-height: 26px;
+            text-align: center;
+            letter-spacing: 0.05em;
+            color: #222222;
+            opacity: 1;
+        }
+
+        .project__item {
+            position: relative;
+            flex-grow: 1;
+        }
+
+        .project__item_margin {
+            margin-right: 32px;
+        }
+
+        .project_img {
+            width: 100%;
+        }
+
+        .project_text {
+            font-size: 32px;
+            line-height: 46px;
+            text-align: right;
+            letter-spacing: 0.05em;
+            color: #FFFFFF;
+            position: absolute;
+            top: 64px;
+            right: 64px;
+        }
+
+        .project_parent {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 32px;
+        }
+
+        .project_small_text {
+            font-size: 28px;
+            position: absolute;
+            text-align: left;
+            top: 32px;
+            left: 32px;
+        }
+
+        .outer_footer {
+            margin: 0 auto;
+            background-color: #316099;
+        }
+
+        .inner_footer1 {
+            padding: 91px 114px 0px 113px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .interested {
+            margin-left: 0px;
+            width: 495px;
+        }
+
+        .footer_header {
+            width: 340px;
+            text-align: left;
+            font-size: 36px;
+            line-height: 46px;
+            letter-spacing: 0.05em;
+            color: #FFFFFF;
+        }
+
+        .footer_text {
+            padding-top: 32px;
+            font-size: 16px;
+            line-height: 26px;
+            letter-spacing: 0.05em;
+            color: #FFFFFF;
+            opacity: 0.6;
+        }
+
+        .talk_button {
+            font-size: 16px;
+            line-height: 26px;
+            text-align: center;
+            letter-spacing: 0.04em;
+            color: #FFFFFF;
+            background: #5A98D0;
+            padding: 15px 80px;
+            align-self: center;
+            text-decoration: none;
+            box-sizing: border-box;
+        }
+
+        .footer_divider {
+            margin-top: 96px;
+            opacity: 0.4;
+            border: 1px solid #FFFFFF;
+        }
+
+        .inner_footer2 {
+            padding: 64px 113px;
+        }
+
+        .contact_list {
+            display: flex;
+            justify-content: space-between;
+            padding-bottom: 64px;
+            font-size: 16px;
+            line-height: 26px;
+            letter-spacing: 0.05em;
+            color: #FFFFFF;
+        }
+
+        .contact_list>li {
+            display: flex;
+            width: 25%;
+        }
+
+        .contact__letter {
+            display: inline;
+            height: 100%;
+        }
+
+        .contact__item {
+            display: inline;
+            padding-left: 19px;
+        }
+
+        .all_right {
+            font-size: 16px;
+            line-height: 26px;
+            letter-spacing: 0.05em;
+            color: #FFFFFF;
+            opacity: 0.4;
+        }
+
+
+        /* contacts */
+
+        .cu_header {
+            margin: 0 auto;
+            height: 379px;
+            max-width: 1366px;
+            background-image: url(img/contact_top.svg);
+            background-repeat: no-repeat;
+            background-position: bottom;
+        }
+
+        .cu_main_menu {
+            margin: 0px 113px;
+        }
+
+        .contact_header {
+            margin-top: 86px;
+            text-align: center;
+        }
+
+        .contact_header_motto {
+            margin: 16px auto 0;
+            width: 65%;
+            font-size: 20px;
+            line-height: 30px;
+            letter-spacing: 0.04em;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .cu_container {
+            margin: 0 auto;
+            max-width: 940px;
+        }
+
+        .cu_main_content {
+            margin: 57px auto 96px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .contact_pic_margin {
+            margin: 78px auto 20px;
+        }
+
+        .cu_contact_info {
+            text-align: left;
+            width: 301px;
+        }
+
+        .cu_contact_info_h4padding {
+            padding: 40px 0 8px;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+        }
+
+        .c_info_style {
+            font-weight: 300;
+            font-size: 16px;
+            line-height: 26px;
+            letter-spacing: 0.04em;
+            color: #1F3F68;
+            opacity: 0.6;
+            text-decoration: none;
+            display: inline-block;
+            padding-top: 16px;
+        }
+
+        .cu_message {
+            width: 540px;
+            height: 800px;
+            box-sizing: border-box;
+            padding: 56px;
+            box-shadow: 5px 10px 50px rgba(16, 112, 177, 0.2);
+            border-radius: 10px;
+        }
+
+        .send_msg_head {
+            padding-bottom: 16px;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+        }
+
+        .send_msg_paragraph {
+            padding-top: 32px;
+            font-size: 16px;
+            line-height: 30px;
+            letter-spacing: 0.04em;
+            color: #1F3F68;
+            opacity: 0.8;
+        }
+
+        .inputs {
+            width: 100%;
+            height: 72px;
+            margin-top: 8px;
+            border: 1px solid #356EAD;
+            box-sizing: border-box;
+            border-radius: 10px;
+            padding-left: 36px;
+            font-weight: 300;
+            font-size: 16px;
+            line-height: 30px;
+            letter-spacing: 0.04em;
+            color: #1F3F68;
+            opacity: 0.2;
+        }
+
+        .input_msg {
+            height: 144px;
+            padding-top: 21px;
+        }
+
+        .snd_btn {
+            margin-top: 72px;
+            width: 100%;
+            height: 72px;
+            background: #5A98D0;
+            box-shadow: 5px 20px 50px rgba(16, 112, 177, 0.2);
+            border-radius: 10px;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 26px;
+            text-align: center;
+            color: #FFFFFF;
+            text-transform: uppercase;
+            border-style: none;
+        }
+
+        .map_frame {
+            height: 480px;
+            width: 100%;
+            margin-bottom: 112px;
+            border: none;
+        }
+
+
+        /* ПЛАНШЕТ */
+
+        @media (max-width: 1024px) {
+
+            .inner_header {
+                margin: 0px 32px;
+                background-size: 44%;
+            }
+
+            .main_menu {
+                padding-top: 55px;
+            }
+
+            .page_title {
+                padding-top: 120px;
+            }
+
+            .what_we_do {
+                margin: 0;
+                padding: 64px 32px 0;
+            }
+
+            .doing_list {
+                flex-direction: column;
+                align-items: center;
+                flex-wrap: nowrap;
+                margin-bottom: 95px;
+            }
+
+            .finish_project {
+                margin: 0 32px 109px;
+            }
+
+            .inner_footer1 {
+                padding: 47px 124px 0px;
+            }
+
+            .interested {
+                width: 336px;
+            }
+
+            .talk_button {
+                padding: 7px 35px;
+            }
+
+            .footer_divider {
+                margin-top: 64px;
+            }
+
+            .inner_footer2 {
+                padding: 64px 124px;
+            }
+
+            .contact_list {
+                display: block;
+                padding-bottom: 39px;
+            }
+
+            .contact_list>li {
+                width: 100%;
+                margin-bottom: 25px;
+            }
+
+            .contact__item {
+                padding-left: 47px;
+            }
+
+            /* ПЛАНШЕТ contacts */
+
+            .cu_header {
+                height: 349px;
+            }
+
+            .cu_main_menu {
+                padding-top: 18px;
+                margin: 0 32px;
+            }
+
+            .contact_header {
+                margin-top: 55px;
+            }
+
+            .cu_container {
+                max-width: unset;
+                width: 100%;
+            }
+
+            .cu_main_content {
+                margin: 57px auto 64px;
+                display: block;
+            }
+
+            .cu_contact_info {
+                margin: 0 auto;
+            }
+
+            .contact_pic_margin {
+                margin-top: 7px;
+            }
+
+            .cu_message {
+                margin: 69px auto 0;
+                width: 520px;
+                height: 780px;
+            }
+
+            .inputs {
+                height: 70px;
+            }
+
+            .input_msg {
+                height: 140px;
+            }
+
+            .map_frame {
+                height: 392px;
+                margin-bottom: 64px;
+            }
+
+        }
+
+
+        /* СМАРТФОН */
+
+        @media (max-width: 667px) {
+
+            .outer_header {
+                width: auto;
+                /* min-height: 376; */
+                height: auto;
+            }
+
+            .inner_header {
+                margin: 0px 16px;
+                background-image: none;
+                text-align: center;
+            }
+
+            .main_menu {
+                padding-top: 24px;
+            }
+
+            .third_heading {
+                font-size: 24px;
+                line-height: 28px;
+                letter-spacing: 0em;
+            }
+
+            .page_title {
+                padding-top: 36px;
+            }
+
+            .top_heading {
+                font-size: 32px;
+                line-height: 37px;
+                margin-bottom: 12px;
+                width: 100%;
+            }
+
+            .under_h1_text {
+                width: 100%;
+            }
+
+            .top_button {
+                font-size: 12px;
+                letter-spacing: 0em;
+                padding: 0 8px;
+                margin: 32px 0 41px;
+            }
+
+            .what_we_do {
+                padding: 48px 20px 0;
+                margin: 0;
+            }
+
+            .doing_list {
+                padding: 32px 3px 0;
+                margin-bottom: 32px;
+            }
+
+            .product {
+                width: 100%;
+            }
+
+            .text_project {
+                width: 100%;
+                margin-bottom: 82px;
+            }
+
+            .finish_project {
+                margin: 22px 16px 64px;
+            }
+
+            .project__item {
+                margin-top: 11px;
+            }
+
+            .project_text {
+                font-size: 16px;
+                line-height: 19px;
+                letter-spacing: 0em;
+                top: 16px;
+                right: 16px;
+            }
+
+            .project_parent {
+                flex-direction: column;
+                margin-top: 0;
+            }
+
+            .project_small_text {
+                top: 16px;
+                left: 16px;
+            }
+
+            .project__item_margin {
+                margin-right: 0;
+            }
+
+            .inner_footer1 {
+                padding: 18px 16px 0px;
+                display: block;
+                text-align: center;
+            }
+
+            .interested {
+                width: 100%;
+            }
+
+            .footer_header {
+                width: 100%;
+                text-align: center;
+            }
+
+            .footer_text {
+                margin-bottom: 40px;
+            }
+
+            .talk_button {
+                padding: 7px 20px;
+                align-self: unset;
+                display: inline-block;
+            }
+
+            .footer_divider {
+                margin-top: 41px;
+            }
+
+            .inner_footer2 {
+                padding: 32px 16px;
+            }
+
+            .contact_list {
+                padding-bottom: 15px;
+            }
+
+            .contact_list>li {
+                margin-bottom: 17px;
+            }
+
+            .contact__item {
+                padding-left: 23px;
+            }
+
+            .all_right {
+                text-align: center;
+            }
+
+            /* СМАРТФОН contacts */
+
+            .cu_header {
+                height: 333px;
+            }
+
+            .cu_main_menu {
+                padding-top: 18px;
+                margin: 0 16px;
+            }
+
+            .second_heading {
+                font-size: 24px;
+                line-height: 28px;
+            }
+
+            .contact_header_motto {
+                margin: 32px auto 0;
+                width: unset;
+                padding: 0px 16px;
+                line-height: 30px;
+                letter-spacing: 0.04em;
+                color: rgba(255, 255, 255, 0.6);
+                font-size: 16px;
+            }
+
+            .cu_main_content {
+                margin-top: 39px;
+                padding: 0 16px;
+                margin-bottom: 32px;
+            }
+
+            .cu_container {
+                max-width: unset;
+                width: 100%;
+            }
+
+            .cu_message {
+                margin-top: 32px;
+                max-width: 520px;
+                width: unset;
+                padding: 36px;
+                height: auto;
+            }
+
+            .send_msg_head {
+                font-size: 16px;
+                padding-bottom: 11px;
+            }
+
+            .send_msg_paragraph {
+                padding-top: 20px;
+                font-size: 14px;
+            }
+
+            .inputs {
+                height: 46px;
+                margin-top: 0;
+            }
+
+            .input_msg {
+                height: 93px;
+            }
+
+            .snd_btn {
+                margin-top: 46px;
+                height: 46px;
+            }
+
+            .map_frame {
+                height: 349px;
+                margin-bottom: 32px;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <!--шапка-->
+
+    <div class="cu_header">
+        <div class="main_menu cu_main_menu">
+            <a href="index.html"><img src="img/logo.svg" alt="logo"></a>
+            <a href="contacts.html"><img src="img/contacts.svg" alt="contacts"></a>
+        </div>
+        <div class="contact_header">
+            <h2 class="second_heading">Contact Us</h2>
+            <p class="contact_header_motto">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor
+                incididunt ut labore et dolore magna aliqua. </p>
+        </div>
+    </div>
+
+    <!--контент-->
+
+    <div class="cu_container">
+        <div class="cu_main_content">
+            <div class="cu_contact_info">
+                <img class="contact_pic_margin" src="img/contact_pic.svg" alt="picture">
+                <h4 class="fourth_heading cu_contact_info_h4padding">ADDRESS</h4>
+                <p class="c_info_style">Санкт-Петербург, п.Шушары, ул.Ростовская 26</p>
+                <h4 class="fourth_heading cu_contact_info_h4padding">PHONE</h4>
+                <ul style="list-style-type: none">
+                    <li><a class="c_info_style" href="tel:+7(981) 123-45-23"><img src="img/phone.png"
+                                style="margin-right: 19px;" alt="tel:">{{ phone_1 }}</a></li>
+                    <li><a class="c_info_style" href="tel:+7(911) 345-89-43"><img src="img/phone.png"
+                                style="margin-right: 19px;" alt="tel:">{{ phone_2 }}</a></li>
+                </ul>
+                <h4 class="fourth_heading cu_contact_info_h4padding">ONLINE SERVICE</h4>
+                <ul style="list-style-type: none">
+                    <li> <a class="c_info_style" href="index.html"><img src="img/www.png" style="margin-right: 19px;"
+                                alt="www:">selhozsite.ru</a></li>
+                    <li> <a class="c_info_style" href="mailto:example@mail.com"><img src="img/email.png"
+                                style="margin-right: 19px;" alt="email:">example@mail.com</a></li>
+                </ul>
+            </div>
+            <div class="cu_message">
+                <form action="#">
+                    <h4 class="fourth_heading send_msg_head">SEND US MESSAGE</h4>
+                    <p class="send_msg_paragraph">Full Name</p>
+                    <input class="inputs" type="text" placeholder="Your Name">
+                    <p class="send_msg_paragraph">Email</p>
+                    <input class="inputs" type="email" placeholder="Your Email">
+                    <p class="send_msg_paragraph">Message</p>
+                    <textarea class="inputs input_msg" placeholder="Your Message" rows="11"></textarea> <br>
+                    <button class="snd_btn" type="submit">submit</button>
+                </form>
+            </div>
+        </div>
+        <div style="clear:both;position:relative;overflow:hidden;">
+            <iframe class="map_frame" src="https://yandex.ru/map-widget/v1/-/CCQxZPfgwB"
+                style="position:relative;"></iframe>
+        </div>
+    </div>
+
+    <!--подвал-->
+    <div class="outer_footer">
+        <div class="inner_footer1">
+            <div class="interested">
+                <h3 class="third_heading footer_header">Заинтересовались нашими овощами?</h3>
+                <p class="paragraph footer_text">Свяжитесь с нами любым удобным способом.</p>
+            </div>
+            <a href="bootstrap.html" class="talk_button">Let’s Talk</a>
+        </div>
+        <hr class="footer_divider">
+        <div class="inner_footer2">
+            <ul class="contact_list">
+                <li>
+                    <div class="contact__letter">A.</div>
+                    <div class="contact__item">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+                </li>
+                <li>
+                    <div class="contact__letter">T.</div>
+                    <div class="contact__item">{{ phone_1 }}</div>
+                </li>
+                <li>
+                    <div class="contact__letter">E.</div>
+                    <div class="contact__item">example@mail.com</div>
+                </li>
+            </ul>
+            <div>
+                <p class="paragraph all_right">Все права защищены</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
