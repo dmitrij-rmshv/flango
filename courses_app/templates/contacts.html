@@ -398,7 +398,7 @@
             line-height: 30px;
             letter-spacing: 0.04em;
             color: #1F3F68;
-            opacity: 0.2;
+            opacity: 0.5;
         }
 
         .input_msg {
@@ -817,14 +817,17 @@
                 </ul>
             </div>
             <div class="cu_message">
-                <form action="#">
+                <form action="#" method="post">
                     <h4 class="fourth_heading send_msg_head">SEND US MESSAGE</h4>
                     <p class="send_msg_paragraph">Full Name</p>
-                    <input class="inputs" type="text" placeholder="Your Name">
-                    <p class="send_msg_paragraph">Email</p>
-                    <input class="inputs" type="email" placeholder="Your Email">
+                    <input class="inputs" type="text" name="user_name" placeholder="Ваше имя">
+                    <p class="send_msg_paragraph">Subject</p>
+                    <input class="inputs" type="text" name="subject" placeholder="Тема сообщения">
                     <p class="send_msg_paragraph">Message</p>
-                    <textarea class="inputs input_msg" placeholder="Your Message" rows="11"></textarea> <br>
+                    <textarea class="inputs input_msg" name="user_msg" placeholder="Текст сообщения"
+                        rows="11"></textarea> <br>
+                    <p class="send_msg_paragraph">Email</p>
+                    <input class="inputs" type="email" name="user_email" placeholder="Ваша почта">
                     <button class="snd_btn" type="submit">submit</button>
                 </form>
             </div>
