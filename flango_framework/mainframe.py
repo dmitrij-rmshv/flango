@@ -7,7 +7,7 @@ from flango_framework.request_handler import TheGetHandler, ThePostHandler
 class PageMissing():
 
     def __call__(self, request):
-        return '404', '404 PAGE missing'
+        return '404 Not OK', '404 PAGE missing'
 
 
 class Flango():
