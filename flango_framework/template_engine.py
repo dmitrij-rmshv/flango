@@ -1,9 +1,11 @@
 # Это как бы templator.py
-from jinja2 import Template
+from jinja2 import Template, FileSystemLoader
+from jinja2.environment import Environment
 
 
-def linkage(pattern_name, **kwargs):
+def linkage(pattern_name, folder='courses_app/templates', **kwargs):
 
-    with open(pattern_name, encoding='utf-8') as pt:
-        template = Template(pt.read())
+    env = Environment()
+    env.loader = FileSystemLoader(folder)
+    template = env.get_template(pattern_name)
     return template.render(**kwargs)

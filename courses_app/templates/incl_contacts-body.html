@@ -1,0 +1,59 @@
+<!--шапка
+
+<div class="cu_header">
+    <div class="main_menu cu_main_menu">
+        <a href="index.html"><img src="img/logo.svg" alt="logo"></a>
+        <a href="contacts.html"><img src="img/contacts.svg" alt="contacts"></a>
+    </div>
+    <div class="contact_header">
+        <h2 class="second_heading">Contact Us</h2>
+        <p class="contact_header_motto">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor
+            incididunt ut labore et dolore magna aliqua. </p>
+    </div>
+</div>-->
+
+<!--контент-->
+
+<div class="cu_container">
+    <div class="cu_main_content">
+        <div class="cu_contact_info">
+            <img class="contact_pic_margin" src="img/contact_pic.svg" alt="picture">
+            <h4 class="fourth_heading cu_contact_info_h4padding">ADDRESS</h4>
+            <p class="c_info_style">Санкт-Петербург, п.Шушары, ул.Ростовская 26</p>
+            <h4 class="fourth_heading cu_contact_info_h4padding">PHONE</h4>
+            <ul style="list-style-type: none">
+                <li><a class="c_info_style" href="tel:+7(981) 123-45-23"><img src="img/phone.png"
+                            style="margin-right: 19px;" alt="tel:">{{ phone_1 }}</a></li>
+                <li><a class="c_info_style" href="tel:+7(911) 345-89-43"><img src="img/phone.png"
+                            style="margin-right: 19px;" alt="tel:">{{ phone_2 }}</a></li>
+            </ul>
+            <h4 class="fourth_heading cu_contact_info_h4padding">ONLINE SERVICE</h4>
+            <ul style="list-style-type: none">
+                <li> <a class="c_info_style" href="index.html"><img src="img/www.png" style="margin-right: 19px;"
+                            alt="www:">selhozsite.ru</a></li>
+                <li> <a class="c_info_style" href="mailto:example@mail.com"><img src="img/email.png"
+                            style="margin-right: 19px;" alt="email:">example@mail.com</a></li>
+            </ul>
+        </div>
+        <div class="cu_message">
+            <form action="#" method="post">
+                <h4 class="fourth_heading send_msg_head">SEND US MESSAGE</h4>
+                <p class="send_msg_paragraph">Full Name</p>
+                <input class="inputs" type="text" name="user_name" placeholder="Ваше имя">
+                <p class="send_msg_paragraph">Subject</p>
+                <input class="inputs" type="text" name="subject" placeholder="Тема сообщения">
+                <p class="send_msg_paragraph">Message</p>
+                <textarea class="inputs input_msg" name="user_msg" placeholder="Текст сообщения" rows="11"></textarea>
+                <br>
+                <p class="send_msg_paragraph">Email</p>
+                <input class="inputs" type="email" name="user_email" placeholder="Ваша почта">
+                <button class="snd_btn" type="submit">submit</button>
+            </form>
+        </div>
+    </div>
+    <div style="clear:both;position:relative;overflow:hidden;">
+        <iframe class="map_frame" src="https://yandex.ru/map-widget/v1/-/CCQxZPfgwB"
+            style="position:relative;"></iframe>
+    </div>
+</div>

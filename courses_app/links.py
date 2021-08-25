@@ -1,5 +1,5 @@
 # это как бы urls.py
-from courses_app.views import Contacts, Index, About
+from courses_app.views import Contacts, Index, About, Blog
 
 
 def secret_token(request):
@@ -16,5 +16,6 @@ mid_layers = [secret_token, other_layer]
 router = {
     '/': Index(),
     '/about/': About(),
+    '/blog/': Blog(),
     '/contacts/': Contacts(),
 }
