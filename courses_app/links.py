@@ -1,9 +1,10 @@
 # это как бы urls.py
-from courses_app.views import Contacts, Index, About, Blog
+from courses_app.views import Contacts, Index, About, Blog, StudyPrograms, CoursesList, CreateCourse, CreateCategory, CategoryList, CopyCourse
 
 
 def secret_token(request):
-    request['data'] = 'er6in9h78imn6rr'
+    pass
+    # request['data'] = 'er6in9h78imn6rr'
 
 
 def other_layer(request):
@@ -11,11 +12,18 @@ def other_layer(request):
     request['phone_2'] = '+7(911)345-89-43'
 
 
-mid_layers = [secret_token, other_layer]
+mid_layers = [other_layer, ]
+# mid_layers = [secret_token, other_layer]
 
 router = {
     '/': Index(),
     '/about/': About(),
     '/blog/': Blog(),
     '/contacts/': Contacts(),
+    '/study_programs/': StudyPrograms(),
+    '/courses-list/': CoursesList(),
+    '/create-course/': CreateCourse(),
+    '/create-category/': CreateCategory(),
+    '/category-list/': CategoryList(),
+    '/copy-course/': CopyCourse()
 }
