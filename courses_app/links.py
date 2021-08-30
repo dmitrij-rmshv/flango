@@ -1,5 +1,5 @@
 # это как бы urls.py
-from courses_app.views import Contacts, Index, About, Blog, StudyPrograms, CoursesList, CreateCourse, CreateCategory, CategoryList, CopyCourse
+from courses_app.views import Contacts, Index, About, Blog, CoursesList, CreateCourse, CreateCategory, CategoryList, CopyCourse
 
 
 def secret_token(request):
