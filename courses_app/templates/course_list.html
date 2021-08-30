@@ -5,9 +5,6 @@
 {% block style %}
 {% include "incl_style.html" %}
 {% endblock %}
-{% block menu %}
-{% include "incl_menu.html" %}
-{% endblock %}
 {% block body %}
 <div>
     <a href="/">назад на главную</a>
@@ -22,7 +19,8 @@
     <h1>Список курсов для категории "{{name}}"</h1>
     {% for item in objects_list %}
     <li>
-        {{item.name}} <span><a href="/copy-course/?name={{item.name}}">скопировать</a></span>
+        {{item.name}}
+        <!-- {{item.name}} <span><a href="/copy-course/?name={{item.name}}">скопировать</a></span> -->
     </li>
     {% endfor %}
 </div>

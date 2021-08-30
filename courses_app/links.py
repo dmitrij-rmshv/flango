@@ -20,7 +20,6 @@ router = {
     '/about/': About(),
     '/blog/': Blog(),
     '/contacts/': Contacts(),
-    '/study_programs/': StudyPrograms(),
     '/courses-list/': CoursesList(),
     '/create-course/': CreateCourse(),
     '/create-category/': CreateCategory(),
