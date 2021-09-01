@@ -58,3 +58,26 @@ class Flango():
             val_decode_str = quopri.decodestring(val).decode('UTF-8')
             new_data[k] = val_decode_str
         return new_data
+
+
+class DebugApp(Flango):
+
+    def __init__(self, routes_obj, mid_layers_obj):
+        self.parent_app = Flango(routes_obj, mid_layers_obj)
+        super().__init__(routes_obj, mid_layers_obj)
+
+    def __call__(self, env, start_response):
+        print(f"DEBUG MODE, тип запроса: =={env['REQUEST_METHOD']}==")
+        print(env)
+        return self.parent_app(env, start_response)
+
+
+class FakeApp(Flango):
+
+    def __init__(self, routes_obj, mid_layers_obj):
+        self.parent_app = Flango(routes_obj, mid_layers_obj)
+        super().__init__(routes_obj, mid_layers_obj)
+
+    def __call__(self, env, start_response):
+        start_response('200 OK', [('Content-Type', 'text/html')])
+        return [b'Hello from Fake']
