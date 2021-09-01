@@ -1,30 +1,38 @@
 from flango_framework.template_engine import linkage
 from courses_app.patterns.creational_patterns import Engine, Logger
+from courses_app.patterns.structural_patterns import FlaskRoute
 
 site = Engine()
 logger = Logger('main')
 
+routes = {}
 
+
+@FlaskRoute(routes=routes, url='/')
 class Index:
     def __call__(self, request):
         return '200 OK', linkage('index.html', objects_list=site.categories)
 
 
+@FlaskRoute(routes=routes, url='/about/')
 class About:
     def __call__(self, request):
         return '200 OK', linkage('about.html')
 
 
+@FlaskRoute(routes=routes, url='/blog/')
 class Blog:
     def __call__(self, request):
         return '200 OK', linkage('blog.html')
 
 
+@FlaskRoute(routes=routes, url='/contacts/')
 class Contacts:
     def __call__(self, request):
         return '200 OK', linkage('contacts.html', phone_1=request.get('phone_1', None), phone_2=request.get('phone_2', None))
 
 
+@FlaskRoute(routes=routes, url='/courses-list/')
 class CoursesList:
     def __call__(self, request):
         try:
@@ -35,6 +43,7 @@ class CoursesList:
             return '200 OK', 'Пока нет курсов'
 
 
+@FlaskRoute(routes=routes, url='/create-course/')
 class CreateCourse:
     category_id = -1
 
@@ -66,6 +75,7 @@ class CreateCourse:
                 return '200 OK', 'No categories have been added yet'
 
 
+@FlaskRoute(routes=routes, url='/create-category/')
 class CreateCategory:
     def __call__(self, request):
 
@@ -94,12 +104,14 @@ class CreateCategory:
             return '200 OK', linkage('create_category.html', categories=categories)
 
 
+@FlaskRoute(routes=routes, url='/category-list/')
 class CategoryList:
     def __call__(self, request):
         logger.log('Список категорий')
         return '200 OK', linkage('category_list.html', objects_list=site.categories)
 
 
+@FlaskRoute(routes=routes, url='/copy-course/')
 class CopyCourse:
     def __call__(self, request):
         request_params = request['request_params']

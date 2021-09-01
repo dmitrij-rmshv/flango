@@ -12,8 +12,8 @@ class PageMissing():
 
 class Flango():
 
-    def __init__(self, router, mid_layers) -> None:
-        self.router = router
+    def __init__(self, routes, mid_layers) -> None:
+        self.routes = routes
         self.mid_layers = mid_layers
 
     def __call__(self, environ, start_response):
@@ -41,9 +41,9 @@ class Flango():
 
         for layer in self.mid_layers:
             layer(request)
-        if way in self.router:
+        if way in self.routes:
             print("I'm worked")
-            view = self.router[way]
+            view = self.routes[way]
         else:
             view = PageMissing()
         code, body = view(request)

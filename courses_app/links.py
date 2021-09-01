@@ -15,14 +15,14 @@ def other_layer(request):
 mid_layers = [other_layer, ]
 # mid_layers = [secret_token, other_layer]
 
-router = {
-    '/': Index(),
-    '/about/': About(),
-    '/blog/': Blog(),
-    '/contacts/': Contacts(),
-    '/courses-list/': CoursesList(),
-    '/create-course/': CreateCourse(),
-    '/create-category/': CreateCategory(),
-    '/category-list/': CategoryList(),
-    '/copy-course/': CopyCourse()
-}
+# router = {
+#     '/': Index(),
+#     '/about/': About(),
+#     '/blog/': Blog(),
+#     '/contacts/': Contacts(),
+#     '/courses-list/': CoursesList(),
+#     '/create-course/': CreateCourse(),
+#     '/create-category/': CreateCategory(),
+#     '/category-list/': CategoryList(),
+#     '/copy-course/': CopyCourse()
+# }
