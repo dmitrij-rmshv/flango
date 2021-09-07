@@ -11,15 +11,15 @@
 {% endblock %}
 {% block body %}
 <div>
-    <a href="/create-category/">Создать новую категорию</a>
-</div>
-<div>
-    <h1>Список существующих категорий</h1>
+    <h1 class="second_heading">Список существующих категорий</h1>
     {% for item in objects_list %}
-    <li>
-        {{item.name}} <span>Количество курсов: {{item.course_count()}}</span>
-        <a href="/courses-list/?id={{item.id}}">Показать курсы</a>
+    <li class="third_heading" style="text-align: left;">
+        {{item.name}} <span class="paragraph under_h1_text">Количество курсов: {{item.course_count()}}</span>
+        <a href="/courses-list/?id={{item.id}}" class="paragraph">Показать курсы</a>
     </li>
     {% endfor %}
+    <a href="/create-category/" class="fourth_heading">Создать новую категорию</a>
+
 </div>
+
 {% endblock %}

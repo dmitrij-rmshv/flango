@@ -14,14 +14,14 @@
 <br>
 
 <div>
-    <a href="/create-course/?id={{id}}">Создать новый курс</a>
     <br>
-    <h1>Список курсов для категории "{{name}}"</h1>
+    <h1 class="second_heading">Список курсов для категории "{{name}}"</h1>
     {% for item in objects_list %}
-    <li>
+    <li class="third_heading" style="text-align: left;">
         {{item.name}}
         <!-- {{item.name}} <span><a href="/copy-course/?name={{item.name}}">скопировать</a></span> -->
     </li>
     {% endfor %}
+    <a href="/create-course/?id={{id}}" class="fourth_heading">Создать новый курс</a>
 </div>
 {% endblock %}
