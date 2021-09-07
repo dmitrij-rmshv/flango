@@ -1,6 +1,7 @@
 from flango_framework.template_engine import linkage
 from courses_app.patterns.creational_patterns import Engine, Logger
 from courses_app.patterns.structural_patterns import FlaskRoute, Debug
+from courses_app.patterns.behavioral_patterns import ListView, CreateView
 
 site = Engine()
 logger = Logger('main')
@@ -137,3 +138,40 @@ class CopyCourse:
             return '200 OK', linkage('course_list.html', objects_list=site.courses)
         except KeyError:
             return '200 OK', 'No courses have been added yet'
+
+
+@FlaskRoute(routes=routes, url='/learner-list/')
+class StudentListView(ListView):
+    queryset = site.learners
+    template_name = 'learner_list.html'
+
+
+@FlaskRoute(routes=routes, url='/create-learner/')
+class StudentCreateView(CreateView):
+    template_name = 'create_learner.html'
+
+    def create_obj(self, data: dict):
+        name = data['name']
+        name = site.decode_value(name)
+        new_obj = site.create_user('student', name)
+        site.learners.append(new_obj)
+
+
+@FlaskRoute(routes=routes, url='/add-learner/')
+class AddStudentByCourseCreateView(CreateView):
+    template_name = 'add_learner.html'
+
+    def get_context_data(self):
+        context = super().get_context_data()
+        context['courses'] = site.courses
+        context['students'] = site.learners
+        return context
+
+    def create_obj(self, data: dict):
+        course_name = data['course_name']
+        course_name = site.decode_value(course_name)
+        course = site.get_course(course_name)
+        student_name = data['student_name']
+        student_name = site.decode_value(student_name)
+        student = site.get_learner(student_name)
+        course.add_student(student)
