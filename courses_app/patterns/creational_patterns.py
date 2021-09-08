@@ -1,6 +1,7 @@
 import copy
 import quopri
-from courses_app.patterns.behavioral_patterns import Subject
+from re import S
+from courses_app.patterns.behavioral_patterns import Subject, ConsoleWriter, FileWriter
 
 
 class User:
@@ -150,9 +151,12 @@ class SingletonByName(type):
 
 class Logger(metaclass=SingletonByName):
 
-    def __init__(self, name):
+    # def __init__(self, name, writer=FileWriter('logfile.log')):
+    def __init__(self, name, writer=ConsoleWriter()):
         self.name = name
+        self.writer = writer
 
-    @staticmethod
-    def log(text):
-        print('log--->', text)
+    # @staticmethod
+    def log(self, text):
+        text = f'log---> {text}'
+        self.writer.write(text)

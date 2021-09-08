@@ -1,14 +1,5 @@
+import json
 from flango_framework.template_engine import linkage
-
-
-class Subject:
-
-    def __init__(self):
-        self.observers = []
-
-    def notify(self):
-        for item in self.observers:
-            item.update(self)
 
 
 class TemplateView:
@@ -67,3 +58,60 @@ class CreateView(TemplateView):
             return self.render_template_with_context()
         else:
             return super().__call__(request)
+
+
+class Observer:
+
+    def update(self, subject):
+        pass
+
+
+class Subject:
+
+    def __init__(self):
+        self.observers = []
+
+    def notify(self):
+        for item in self.observers:
+            item.update(self)
+
+
+class SmsNotifier(Observer):
+
+    def update(self, subject):
+        print('SMS->', 'к нам присоединился', subject.students[-1].name)
+
+
+class EmailNotifier(Observer):
+
+    def update(self, subject):
+        print(('EMAIL->', 'к нам присоединился', subject.students[-1].name))
+
+
+class ConsoleWriter:
+
+    def write(self, text):
+        print(text)
+
+
+class FileWriter:
+
+    def __init__(self, file_name) -> None:
+        self.file_name = file_name
+
+    def write(self, text):
+        with open(self.file_name, 'a', encoding='utf-8') as f:
+            f.write(text + '\n')
+
+
+class BaseSerializer:
+
+    def __init__(self, obj) -> None:
+        self.obj = obj
+
+    def save(self):
+        return json.dumps(self.obj)
+
+    @staticmethod
+    def load(data):
+        return json.loads(data)

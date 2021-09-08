@@ -1,10 +1,12 @@
 from flango_framework.template_engine import linkage
 from courses_app.patterns.creational_patterns import Engine, Logger
 from courses_app.patterns.structural_patterns import FlaskRoute, Debug
-from courses_app.patterns.behavioral_patterns import ListView, CreateView
+from courses_app.patterns.behavioral_patterns import ListView, CreateView, EmailNotifier, SmsNotifier, BaseSerializer
 
 site = Engine()
 logger = Logger('main')
+email_notifier = EmailNotifier()
+sms_notifier = SmsNotifier()
 
 routes = {}
 
@@ -67,6 +69,8 @@ class CreateCourse:
                 category = site.find_category_by_id(int(self.category_id))
 
                 course = site.create_course('record', name, category)
+                course.observers.append(email_notifier)
+                course.observers.append(sms_notifier)
                 site.courses.append(course)
 
             return '200 OK', linkage('course_list.html', objects_list=category.courses,
@@ -175,3 +179,10 @@ class AddStudentByCourseCreateView(CreateView):
         student_name = site.decode_value(student_name)
         student = site.get_learner(student_name)
         course.add_student(student)
+
+
+@FlaskRoute(routes=routes, url='/api/')
+class CourseApi:
+    def __call__(self, request):
+        # print(site.courses)
+        return '200 OK', BaseSerializer(site.courses).save()
