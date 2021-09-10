@@ -1,4 +1,4 @@
-import json
+import jsonpickle
 from flango_framework.template_engine import linkage
 
 
@@ -106,12 +106,12 @@ class FileWriter:
 
 class BaseSerializer:
 
-    def __init__(self, obj) -> None:
+    def __init__(self, obj):
         self.obj = obj
 
     def save(self):
-        return json.dumps(self.obj)
+        return jsonpickle.dumps(self.obj)
 
     @staticmethod
     def load(data):
-        return json.loads(data)
+        return jsonpickle.loads(data)
