@@ -2,6 +2,7 @@ import copy
 import quopri
 from re import S
 from courses_app.patterns.behavioral_patterns import Subject, ConsoleWriter, FileWriter
+from courses_app.patterns.architectural_system_pattern_unit_of_work import DomainObject
 
 
 class User:
@@ -14,7 +15,7 @@ class Professor(User):
     pass
 
 
-class Learner(User):
+class Learner(User, DomainObject):
 
     def __init__(self, name):
         self.courses = []
@@ -35,7 +36,7 @@ class CourseProto:
         return copy.deepcopy(self)
 
 
-class Course(CourseProto, Subject):
+class Course(CourseProto, Subject, DomainObject):
 
     def __init__(self, name, category):
         self.name = name
@@ -61,7 +62,7 @@ class RecordCourse(Course):
     pass
 
 
-class Category:
+class Category(DomainObject):
     category_id = 0
 
     def __init__(self, name, category) -> None:

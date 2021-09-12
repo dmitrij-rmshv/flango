@@ -2,13 +2,16 @@ from flango_framework.template_engine import linkage
 from courses_app.patterns.creational_patterns import Engine, Logger
 from courses_app.patterns.structural_patterns import FlaskRoute, Debug
 from courses_app.patterns.behavioral_patterns import ListView, CreateView, EmailNotifier, SmsNotifier, BaseSerializer
+from courses_app.patterns.architectural_system_pattern_unit_of_work import UnitOfWork
+from courses_app.patterns.architectural_system_pattern_mappers import MapperRegistry
 
 site = Engine()
 logger = Logger('main')
 email_notifier = EmailNotifier()
 sms_notifier = SmsNotifier()
-
 routes = {}
+UnitOfWork.new_current()
+UnitOfWork.get_current().set_mapper_registry(MapperRegistry)
 
 
 @FlaskRoute(routes=routes, url='/')
@@ -146,8 +149,13 @@ class CopyCourse:
 
 @FlaskRoute(routes=routes, url='/learner-list/')
 class StudentListView(ListView):
-    queryset = site.learners
+    # queryset = site.learners
+    # queryset = MapperRegistry.get_current_mapper('learner').all()
     template_name = 'learner_list.html'
+
+    def get_queryset(self):
+        mapper = MapperRegistry.get_current_mapper('learner')
+        return mapper.all()
 
 
 @FlaskRoute(routes=routes, url='/create-learner/')
@@ -159,6 +167,8 @@ class StudentCreateView(CreateView):
         name = site.decode_value(name)
         new_obj = site.create_user('student', name)
         site.learners.append(new_obj)
+        new_obj.mark_new()
+        UnitOfWork.get_current().commit()
 
 
 @FlaskRoute(routes=routes, url='/add-learner/')
