@@ -19,6 +19,9 @@ class Index:
     @Debug('Index')
     def __call__(self, request):
         return '200 OK', linkage('index.html', objects_list=site.categories)
+        # categories = MapperRegistry.get_current_mapper('category').all()
+        # print(categories)
+        # return '200 OK', linkage('index.html', objects_list=categories)
 
 
 @FlaskRoute(routes=routes, url='/about/')
@@ -76,6 +79,9 @@ class CreateCourse:
                 course.observers.append(sms_notifier)
                 site.courses.append(course)
 
+                course.mark_new()
+                UnitOfWork.get_current().commit()
+
             return '200 OK', linkage('course_list.html', objects_list=category.courses,
                                      name=category.name, id=category.id)
 
@@ -113,10 +119,15 @@ class CreateCategory:
 
             site.categories.append(new_category)
 
+            new_category.mark_new()
+            UnitOfWork.get_current().commit()
+
             return '200 OK', linkage('index.html', objects_list=site.categories)
         else:
-            categories = site.categories
-            return '200 OK', linkage('create_category.html', categories=categories)
+            # categories = site.categories
+            categories = MapperRegistry.get_current_mapper('learner')
+            # return '200 OK', linkage('create_category.html', categories=categories)
+            return '200 OK', linkage('create_category.html', categories=categories.all())
 
 
 @FlaskRoute(routes=routes, url='/category-list/')

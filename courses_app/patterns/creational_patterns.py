@@ -100,6 +100,7 @@ class Engine:
 
     @staticmethod
     def create_category(name, category=None):
+        # return UserFactory.create(name, category)
         return Category(name, category)
 
     def find_category_by_id(self, id):

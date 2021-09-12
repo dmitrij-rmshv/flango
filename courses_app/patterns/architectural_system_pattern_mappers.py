@@ -119,10 +119,10 @@ class CategoryMapper:
         self.cursor.execute(statement)
         result = []
         for item in self.cursor.fetchall():
-            id, name = item
-            category = Category(name)
+            id, name, category = item
+            category = Category(name, category)
             category.id = id
-            result.append(category)
+            result.append(name)
         return result
 
     def find_by_id(self, id):
