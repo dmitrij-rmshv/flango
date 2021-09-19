@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}
+Назначить на курс
+{% endblock %}
+{% block style %}
+{% include "incl_style.html" %}
+{% endblock %}
+{% block menu %}
+{% include "incl_menu.html" %}
+{% endblock %}
+{% block body %}
+<div>
+    <li>
+        <a href="/professor-list/">Назад</a>
+    </li>
+    <li>
+        <a href="/create-professor/">Создать учителя</a>
+    </li>
+</div>
+<h1 class="second_heading">Назначение учителя на курс</h1>
+<div class="cu_main_content cu_message">
+    <form method="post">
+        <select class="inputs" style="width: 200px" size="3" name="course_name">
+            {% for item in courses %}
+            <option value="{{item.name}}">{{item.name}}</option>
+            {% endfor %}
+        </select>
+        <select class="inputs" style="width: 200px" size="3" name="professor_name">
+            {% for item in professors %}
+            <option value="{{item.name}}">{{item.name}}</option>
+            {% endfor %}
+        </select>
+        <button class="snd_btn" type="submit">Записать</button>
+    </form>
+</div>
+{% endblock %}

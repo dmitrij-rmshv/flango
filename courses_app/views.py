@@ -202,7 +202,49 @@ class AddStudentByCourseCreateView(CreateView):
         course.add_student(student)
 
 
-@FlaskRoute(routes=routes, url='/api/')
+@FlaskRoute(routes=routes, url='/professor-list/')
+class ProfessorListView(ListView):
+    template_name = 'professor_list.html'
+
+    def get_queryset(self):
+        mapper = MapperRegistry.get_current_mapper('professor')
+        return mapper.all()
+
+
+@FlaskRoute(routes=routes, url='/create-professor/')
+class ProfessorCreateView(CreateView):
+    template_name = 'create_professor.html'
+
+    def create_obj(self, data: dict):
+        name = data['name']
+        name = site.decode_value(name)
+        new_obj = site.create_user('teacher', name)
+        site.professors.append(new_obj)
+        new_obj.mark_new()
+        UnitOfWork.get_current().commit()
+
+
+@FlaskRoute(routes=routes, url='/add-professor/')
+class AddProfessorByCourseCreateView(CreateView):
+    template_name = 'add_professor.html'
+
+    def get_context_data(self):
+        context = super().get_context_data()
+        context['courses'] = site.courses
+        context['professors'] = site.professors
+        return context
+
+    def create_obj(self, data: dict):
+        course_name = data['course_name']
+        course_name = site.decode_value(course_name)
+        course = site.get_course(course_name)
+        professor_name = data['professor_name']
+        professor_name = site.decode_value(professor_name)
+        professor = site.get_professor(professor_name)
+        course.add_professor(professor)
+
+
+@ FlaskRoute(routes=routes, url='/api/')
 class CourseApi:
     def __call__(self, request):
         # print(site.courses)

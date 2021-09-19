@@ -1,5 +1,5 @@
 import sqlite3
-from courses_app.patterns.creational_patterns import Course, Learner, Category
+from courses_app.patterns.creational_patterns import Course, Learner, Category, Professor
 
 
 class LearnerMapper:
@@ -40,6 +40,58 @@ class LearnerMapper:
     def update(self, obj):
         statement = f"UPDATE {self.tablename} SET name=? WHERE id=?"
         # Где взять obj.id? Добавить в DomainModel? Или добавить когда берем объект из базы
+        self.cursor.execute(statement, (obj.name, obj.id))
+        try:
+            self.connection.commit()
+        except Exception as e:
+            raise DbUpdateException(e.args)
+
+    def delete(self, obj):
+        statement = f"DELETE FROM {self.tablename} WHERE id=?"
+        self.cursor.execute(statement, (obj.id,))
+        try:
+            self.connection.commit()
+        except Exception as e:
+            raise DbDeleteException(e.args)
+
+
+class ProfessorMapper:
+
+    def __init__(self, connection):
+        self.connection = connection
+        self.cursor = connection.cursor()
+        self.tablename = 'professors'
+
+    def all(self):
+        statement = f'SELECT * from {self.tablename}'
+        self.cursor.execute(statement)
+        result = []
+        for item in self.cursor.fetchall():
+            id, name = item
+            professor = Professor(name)
+            professor.id = id
+            result.append(professor)
+        return result
+
+    def find_by_id(self, id):
+        statement = f"SELECT id, name FROM {self.tablename} WHERE id=?"
+        self.cursor.execute(statement, (id,))
+        result = self.cursor.fetchone()
+        if result:
+            return Professor(*result)
+        else:
+            raise RecordNotFoundException(f'record with id={id} not found')
+
+    def insert(self, obj):
+        statement = f"INSERT INTO {self.tablename} (name) VALUES (?)"
+        self.cursor.execute(statement, (obj.name,))
+        try:
+            self.connection.commit()
+        except Exception as e:
+            raise DbCommitException(e.args)
+
+    def update(self, obj):
+        statement = f"UPDATE {self.tablename} SET name=? WHERE id=?"
         self.cursor.execute(statement, (obj.name, obj.id))
         try:
             self.connection.commit()
@@ -187,7 +239,8 @@ class MapperRegistry:
     mappers = {
         'learner': LearnerMapper,
         'category': CategoryMapper,
-        'course': CourseMapper
+        'course': CourseMapper,
+        'professor': ProfessorMapper,
     }
 
     @staticmethod
@@ -200,6 +253,8 @@ class MapperRegistry:
             return CategoryMapper(connection)
         if isinstance(obj, Course):
             return CourseMapper(connection)
+        if isinstance(obj, Professor):
+            return ProfessorMapper(connection)
 
     @staticmethod
     def get_current_mapper(name):
