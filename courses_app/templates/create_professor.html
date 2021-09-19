@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}
+Создание ученика
+{% endblock %}
+{% block style %}
+{% include "incl_style.html" %}
+{% endblock %}
+{% block menu %}
+{% include "incl_menu.html" %}
+{% endblock %}
+{% block body %}
+<div>
+    <li>
+        <a href="/professor-list/"> Назад </a>
+    </li>
+    <li>
+        <a href="/add-professor/"> Назначить учителя на курс </a>
+    </li>
+</div>
+<div class="cu_main_content cu_message">
+    <h4 class="fourth_heading send_msg_head">Создание учителя</h4>
+    <form method="post">
+        <input class="inputs" type="text" name="name" placeholder="Имя">
+        <button class="snd_btn" type="submit">Сохранить</button>
+    </form>
+</div>
+{% endblock %}

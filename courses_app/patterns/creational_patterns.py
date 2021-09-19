@@ -11,8 +11,11 @@ class User:
         self.name = name
 
 
-class Professor(User):
-    pass
+class Professor(User, DomainObject):
+
+    def __init__(self, name):
+        self.courses = []
+        super().__init__(name)
 
 
 class Learner(User, DomainObject):
@@ -43,6 +46,7 @@ class Course(CourseProto, Subject, DomainObject):
         self.category = category
         self.category.courses.append(self)
         self.students = []
+        self.professors = []
         super().__init__()
 
     def __getitem__(self, item):
@@ -51,6 +55,11 @@ class Course(CourseProto, Subject, DomainObject):
     def add_student(self, student: Learner):
         self.students.append(student)
         student.courses.append(self)
+        self.notify()
+
+    def add_professor(self, professor: Professor):
+        self.professors.append(professor)
+        professor.courses.append(self)
         self.notify()
 
 
@@ -122,6 +131,11 @@ class Engine:
 
     def get_learner(self, name) -> Learner:
         for item in self.learners:
+            if item.name == name:
+                return item
+
+    def get_professor(self, name) -> Professor:
+        for item in self.professors:
             if item.name == name:
                 return item
 

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}
+Ученики
+{% endblock %}
+{% block style %}
+{% include "incl_style.html" %}
+{% endblock %}
+{% block menu %}
+{% include "incl_menu.html" %}
+{% endblock %}
+{% block body %}
+<div>
+    <li>
+        <a href="/create-professor/">Создать учителя</a>
+    </li>
+</div>
+
+<h1 class="second_heading">Список учителей</h1>
+
+<div>
+    {% for item in objects_list %}
+    <li class="third_heading" style="text-align: left;">
+        {{item.name}}
+        &nbsp &nbsp <span class="paragraph under_h1_text">
+            {% for course in item.courses %}
+            {{course.name}}
+            {% endfor %}
+        </span>
+    </li>
+    {% endfor %}
+</div>
+
+<div>
+    <li>
+        <a href="/add-professor/">Добавить учителя на курс</a>
+    </li>
+</div>
+{% endblock %}
